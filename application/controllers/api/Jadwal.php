@@ -4,27 +4,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
-class Mahasiswa extends REST_Controller{
+class Jadwal extends REST_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->model('Mahasiswa_model','mhs');
+        $this->load->model('Jadwal_model','mJadwal');
     }
     public function index_get(){
         $id = $this->get('id');
         if ($id == null) {
-            $mahasiswa = $this->mhs->getMahasiswa();
+            $Jadwal = $this->mJadwal->getJadwal();
         } else{
-            $mahasiswa = $this->mhs->getMahasiswa($id);
+            $Jadwal = $this->mJadwal->getJadwal($id);
         }
-        if ($mahasiswa){
+        if ($Jadwal){
             $this->response([
                 'status' => true,
-                'data' =>$mahasiswa
+                'data' =>$Jadwal
             ], REST_Controller::HTTP_OK);
         } else {
             $this->response([
                 'status' => false,
-                'message' => 'id not found'
+                'message' => 'data tidak ditemukan'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
@@ -32,68 +32,58 @@ class Mahasiswa extends REST_Controller{
     public function index_delete(){
         $id = $this->delete('id');
         if ($id == null){
-            var_dump($id);
             $this->response([
                 'status' => false,
-                'message' => 'provide an id'
+                'message' => 'tambahkan id'
             ], REST_Controller::HTTP_BAD_REQUEST);
         } else {
-            if ($this->mhs->deleteMahasiswa($id)>0){
+            if ($this->mJadwal->deleteJadwal($id)>0){
                 //ok
                 $this->response([
                     'status' => true,
-                    'id' => $id,
-                    'message' => 'deleted'
+                    'message' => 'terhapus'
                 ], REST_Controller::HTTP_NO_CONTENT);
             }
             else{
                 $this->response([
                     'status' => false,
-                    'message' => 'id not found'
+                    'message' => 'id tidak ditemukan'
                 ], REST_Controller::HTTP_BAD_REQUEST);
             }          
         }
     }
     public function index_post(){
         $data=[
-            'nrp' => $this->post('nrp'),
-            'nama' => $this->post('nama'),
-            'email' => $this->post('email'),
-            'jurusan' => $this->post('jurusan')
+            'Jadwal' => $this->post('Jadwal'),
         ];
         
-        if ($this->mhs->createMahasiswa($data)>0){
+        if ($this->mJadwal->createJadwal($data)>0){
             $this->response([
                 'status' => true,
-                'id' => $id,
-                'message' => 'new mahasiswa has been created'
+                'message' => 'Jadwal baru ditambahkan'
             ], REST_Controller::HTTP_CREATED);
         } else {
             $this->response([
                 'status' => false,
-                'message' => 'failed to create new data'
+                'message' => 'gagal menambahkan data baru'
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'nrp' => $this->put('nrp'),
-            'nama' => $this->put('nama'),
-            'email' => $this->put('email'),
-            'jurusan' => $this->put('jurusan')
+            'Jadwal' => $this->put('Jadwal')
         ];
 
-        if ($this->mhs->updateMahasiswa($data,$id)>0){
+        if ($this->mJadwal->updateJadwal($data,$id)>0){
             $this->response([
                 'status' => true,
-                'id' => $id,
-                'message' => 'new mahasiswa has been updated'
+                'message' => 'Jadwal telah diperbarui'
             ], REST_Controller::HTTP_NO_CONTENT);
         } else {
             $this->response([
                 'status' => false,
-                'message' => 'failed to update data'
+                'message' => 'gagal memperbarui Jadwal'
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
