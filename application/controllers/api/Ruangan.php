@@ -4,22 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
-class Waktu extends REST_Controller{
+class Ruangan extends REST_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->model('Waktu_model','mWaktu');
+        $this->load->model('Ruangan_model','mRuangan');
     }
     public function index_get(){
         $id = $this->get('id');
         if ($id == null) {
-            $Waktu = $this->mWaktu->getWaktu();
+            $Ruangan = $this->mRuangan->getRuangan();
         } else{
-            $Waktu = $this->mWaktu->getWaktu($id);
+            $Ruangan = $this->mRuangan->getRuangan($id);
         }
-        if ($Waktu){
+        if ($Ruangan){
             $this->response([
                 'status' => true,
-                'data' =>$Waktu
+                'data' =>$Ruangan
             ], REST_Controller::HTTP_OK);
         } else {
             $this->response([
@@ -37,7 +37,7 @@ class Waktu extends REST_Controller{
                 'message' => 'tambahkan id'
             ], REST_Controller::HTTP_BAD_REQUEST);
         } else {
-            if ($this->mWaktu->deleteWaktu($id)>0){
+            if ($this->mRuangan->deleteRuangan($id)>0){
                 //ok
                 $this->response([
                     'status' => true,
@@ -54,13 +54,13 @@ class Waktu extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'Waktu' => $this->post('Waktu'),
+            'Ruangan' => $this->post('Ruangan')
         ];
         
-        if ($this->mWaktu->createWaktu($data)>0){
+        if ($this->mRuangan->createRuangan($data)>0){
             $this->response([
                 'status' => true,
-                'message' => 'Waktu baru ditambahkan'
+                'message' => 'Ruangan baru ditambahkan'
             ], REST_Controller::HTTP_CREATED);
         } else {
             $this->response([
@@ -72,18 +72,18 @@ class Waktu extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'Waktu' => $this->put('Waktu')
+            'Ruangan' => $this->put('Ruangan')
         ];
 
-        if ($this->mWaktu->updateWaktu($data,$id)>0){
+        if ($this->mRuangan->updateRuangan($data,$id)>0){
             $this->response([
                 'status' => true,
-                'message' => 'Waktu telah diperbarui'
+                'message' => 'Ruangan telah diperbarui'
             ], REST_Controller::HTTP_NO_CONTENT);
         } else {
             $this->response([
                 'status' => false,
-                'message' => 'gagal memperbarui Waktu'
+                'message' => 'gagal memperbarui Ruangan'
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
     }

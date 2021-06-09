@@ -54,7 +54,7 @@ class Waktu extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'Waktu' => $this->post('Waktu'),
+            'Waktu' => $this->post('Waktu')
         ];
         
         if ($this->mWaktu->createWaktu($data)>0){

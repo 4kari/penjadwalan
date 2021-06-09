@@ -54,7 +54,7 @@ class Periode extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'Periode' => $this->post('Periode'),
+            'Periode' => $this->post('Periode')
         ];
         
         if ($this->mPeriode->createPeriode($data)>0){

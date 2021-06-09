@@ -54,7 +54,15 @@ class Jadwal extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'Jadwal' => $this->post('Jadwal'),
+            'judul' => $this->post('judul'),
+            'tanggal' => $this->post('tanggal'),
+            'waktu' => $this->post('waktu'),
+            'ruangan' => $this->post('ruangan'),
+            'periode' => $this->post('periode'),
+            'penguji_1' => $this->post('penguji_1'),
+            'penguji_2' => $this->post('penguji_2'),
+            'penguji_3' => $this->post('penguji_3'),
+            'tipe' => $this->post('tipe')
         ];
         
         if ($this->mJadwal->createJadwal($data)>0){
@@ -72,7 +80,15 @@ class Jadwal extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'Jadwal' => $this->put('Jadwal')
+            'judul' => $this->post('judul'),
+            'tanggal' => $this->post('tanggal'),
+            'waktu' => $this->post('waktu'),
+            'ruangan' => $this->post('ruangan'),
+            'periode' => $this->post('periode'),
+            'penguji_1' => $this->post('penguji_1'),
+            'penguji_2' => $this->post('penguji_2'),
+            'penguji_3' => $this->post('penguji_3'),
+            'tipe' => $this->post('tipe')
         ];
 
         if ($this->mJadwal->updateJadwal($data,$id)>0){

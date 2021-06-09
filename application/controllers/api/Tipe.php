@@ -54,7 +54,7 @@ class Tipe extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'Tipe' => $this->post('Tipe'),
+            'Tipe' => $this->post('Tipe')
         ];
         
         if ($this->mTipe->createTipe($data)>0){
