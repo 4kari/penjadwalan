@@ -54,15 +54,15 @@ class Jadwal extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'judul' => $this->post('judul'),
-            'tanggal' => $this->post('tanggal'),
-            'waktu' => $this->post('waktu'),
-            'ruangan' => $this->post('ruangan'),
-            'periode' => $this->post('periode'),
-            'penguji_1' => $this->post('penguji_1'),
-            'penguji_2' => $this->post('penguji_2'),
-            'penguji_3' => $this->post('penguji_3'),
-            'tipe' => $this->post('tipe')
+            'judul' => $this->post('Judul'),
+            'tanggal' => $this->post('Tanggal'),
+            'waktu' => $this->post('Waktu'),
+            'ruangan' => $this->post('Ruangan'),
+            'periode' => $this->post('Periode'),
+            'penguji_1' => $this->post('Penguji_1'),
+            'penguji_2' => $this->post('Penguji_2'),
+            'penguji_3' => $this->post('Penguji_3'),
+            'tipe' => $this->post('Tipe')
         ];
         
         if ($this->mJadwal->createJadwal($data)>0){
@@ -80,15 +80,15 @@ class Jadwal extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'judul' => $this->post('judul'),
-            'tanggal' => $this->post('tanggal'),
-            'waktu' => $this->post('waktu'),
-            'ruangan' => $this->post('ruangan'),
-            'periode' => $this->post('periode'),
-            'penguji_1' => $this->post('penguji_1'),
-            'penguji_2' => $this->post('penguji_2'),
-            'penguji_3' => $this->post('penguji_3'),
-            'tipe' => $this->post('tipe')
+            'judul' => $this->put('Judul'),
+            'tanggal' => $this->put('Tanggal'),
+            'waktu' => $this->put('Waktu'),
+            'ruangan' => $this->put('Ruangan'),
+            'periode' => $this->put('Periode'),
+            'penguji_1' => $this->put('Penguji_1'),
+            'penguji_2' => $this->put('Penguji_2'),
+            'penguji_3' => $this->put('Penguji_3'),
+            'tipe' => $this->put('Tipe')
         ];
 
         if ($this->mJadwal->updateJadwal($data,$id)>0){
