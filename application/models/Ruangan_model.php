@@ -1,22 +1,22 @@
 <?php
-class Waktu_model extends CI_Model{
-    public function getWaktu($id=null){
+class Ruangan_model extends CI_Model{
+    public function getRuangan($id=null){
         if ($id === null){
-            return $this->db->get('Waktu')->result_array();
+            return $this->db->get('Ruangan')->result_array();
         } else {
-            return $this->db->get_where('Waktu', ['id' => $id])->row_array();
+            return $this->db->get_where('Ruangan', ['id' => $id])->row_array();
         }
     }
-    public function deleteWaktu($id){
-        $this->db->delete('Waktu', ['id' => $id]);
+    public function deleteRuangan($id){
+        $this->db->delete('Ruangan', ['id' => $id]);
         return $this->db->affected_rows();
     }
-    public function createWaktu($data){
-        $this->db->insert('Waktu',$data);
+    public function createRuangan($data){
+        $this->db->insert('Ruangan',$data);
         return $this->db->affected_rows();
     }
-    public function updateWaktu($data,$id){
-        $this->db->update('Waktu', $data, ['id' => $id]);
+    public function updateRuangan($data,$id){
+        $this->db->update('Ruangan', $data, ['id' => $id]);
         return $this->db->affected_rows();
     }
 }
