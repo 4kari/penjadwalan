@@ -54,7 +54,7 @@ class Validasi extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'id' => $this->post('id'),
+            'id_jadwal' => $this->post('id_jadwal'),
             'penguji_1' => $this->post('Penguji_1'),
             'penguji_2' => $this->post('Penguji_2'),
             'penguji_3' => $this->post('Penguji_3'),
@@ -77,7 +77,7 @@ class Validasi extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'id' => $this->put('id'),
+            'id_jadwal' => $this->put('id_jadwal'),
             'penguji_1' => $this->put('Penguji_1'),
             'penguji_2' => $this->put('Penguji_2'),
             'penguji_3' => $this->put('Penguji_3'),
