@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2021 at 02:02 PM
+-- Generation Time: Sep 11, 2021 at 04:07 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -39,13 +39,6 @@ CREATE TABLE `jadwal` (
   `penguji_3` varchar(18) DEFAULT NULL,
   `tipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `jadwal`
---
-
-INSERT INTO `jadwal` (`id`, `judul`, `tanggal`, `waktu`, `ruangan`, `periode`, `penguji_1`, `penguji_2`, `penguji_3`, `tipe`) VALUES
-(2, 'sistem2', '2000-01-02', 2, 1, 6, '170411100099', '170411100099', '170411100099', 1);
 
 -- --------------------------------------------------------
 
@@ -123,19 +116,13 @@ INSERT INTO `tipe` (`id`, `tipe`) VALUES
 
 CREATE TABLE `validasi` (
   `id` int(11) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
   `penguji_1` varchar(18) DEFAULT NULL,
   `penguji_2` varchar(18) DEFAULT NULL,
   `penguji_3` varchar(18) DEFAULT NULL,
   `pembimbing_1` varchar(18) DEFAULT NULL,
   `pembimbing_2` varchar(18) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `validasi`
---
-
-INSERT INTO `validasi` (`id`, `penguji_1`, `penguji_2`, `penguji_3`, `pembimbing_1`, `pembimbing_2`) VALUES
-(2, '170411100099', '170411100099', '170411100099', '170411100119', '170411100119');
 
 -- --------------------------------------------------------
 
@@ -207,7 +194,8 @@ ALTER TABLE `tipe`
 -- Indexes for table `validasi`
 --
 ALTER TABLE `validasi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
 -- Indexes for table `waktu`
@@ -223,7 +211,7 @@ ALTER TABLE `waktu`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- AUTO_INCREMENT for table `periode`
@@ -242,6 +230,12 @@ ALTER TABLE `ruangan`
 --
 ALTER TABLE `tipe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `validasi`
+--
+ALTER TABLE `validasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- AUTO_INCREMENT for table `waktu`
@@ -266,7 +260,7 @@ ALTER TABLE `jadwal`
 -- Constraints for table `validasi`
 --
 ALTER TABLE `validasi`
-  ADD CONSTRAINT `validasi_jadwal` FOREIGN KEY (`id`) REFERENCES `jadwal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `validasi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
