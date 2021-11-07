@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2021 at 04:07 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.19
+-- Waktu pembuatan: 07 Nov 2021 pada 13.35
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwal`
+-- Struktur dari tabel `jadwal`
 --
 
 CREATE TABLE `jadwal` (
@@ -43,7 +43,7 @@ CREATE TABLE `jadwal` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `periode`
+-- Struktur dari tabel `periode`
 --
 
 CREATE TABLE `periode` (
@@ -52,7 +52,7 @@ CREATE TABLE `periode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `periode`
+-- Dumping data untuk tabel `periode`
 --
 
 INSERT INTO `periode` (`id`, `periode`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `periode` (`id`, `periode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ruangan`
+-- Struktur dari tabel `ruangan`
 --
 
 CREATE TABLE `ruangan` (
@@ -81,7 +81,7 @@ CREATE TABLE `ruangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `ruangan`
+-- Dumping data untuk tabel `ruangan`
 --
 
 INSERT INTO `ruangan` (`id`, `ruangan`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `ruangan` (`id`, `ruangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipe`
+-- Struktur dari tabel `tipe`
 --
 
 CREATE TABLE `tipe` (
@@ -101,7 +101,7 @@ CREATE TABLE `tipe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tipe`
+-- Dumping data untuk tabel `tipe`
 --
 
 INSERT INTO `tipe` (`id`, `tipe`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `tipe` (`id`, `tipe`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `validasi`
+-- Struktur dari tabel `validasi`
 --
 
 CREATE TABLE `validasi` (
@@ -127,7 +127,7 @@ CREATE TABLE `validasi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `waktu`
+-- Struktur dari tabel `waktu`
 --
 
 CREATE TABLE `waktu` (
@@ -136,7 +136,7 @@ CREATE TABLE `waktu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `waktu`
+-- Dumping data untuk tabel `waktu`
 --
 
 INSERT INTO `waktu` (`id`, `waktu`) VALUES
@@ -163,7 +163,7 @@ INSERT INTO `waktu` (`id`, `waktu`) VALUES
 --
 
 --
--- Indexes for table `jadwal`
+-- Indeks untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id`),
@@ -173,82 +173,82 @@ ALTER TABLE `jadwal`
   ADD KEY `jadwal_tipe` (`tipe`);
 
 --
--- Indexes for table `periode`
+-- Indeks untuk tabel `periode`
 --
 ALTER TABLE `periode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ruangan`
+-- Indeks untuk tabel `ruangan`
 --
 ALTER TABLE `ruangan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tipe`
+-- Indeks untuk tabel `tipe`
 --
 ALTER TABLE `tipe`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `validasi`
+-- Indeks untuk tabel `validasi`
 --
 ALTER TABLE `validasi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
--- Indexes for table `waktu`
+-- Indeks untuk tabel `waktu`
 --
 ALTER TABLE `waktu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `jadwal`
+-- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
--- AUTO_INCREMENT for table `periode`
+-- AUTO_INCREMENT untuk tabel `periode`
 --
 ALTER TABLE `periode`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `ruangan`
+-- AUTO_INCREMENT untuk tabel `ruangan`
 --
 ALTER TABLE `ruangan`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tipe`
+-- AUTO_INCREMENT untuk tabel `tipe`
 --
 ALTER TABLE `tipe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `validasi`
+-- AUTO_INCREMENT untuk tabel `validasi`
 --
 ALTER TABLE `validasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
--- AUTO_INCREMENT for table `waktu`
+-- AUTO_INCREMENT untuk tabel `waktu`
 --
 ALTER TABLE `waktu`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `jadwal`
+-- Ketidakleluasaan untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_periode` FOREIGN KEY (`periode`) REFERENCES `periode` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -257,7 +257,7 @@ ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_waktu` FOREIGN KEY (`waktu`) REFERENCES `waktu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `validasi`
+-- Ketidakleluasaan untuk tabel `validasi`
 --
 ALTER TABLE `validasi`
   ADD CONSTRAINT `validasi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id`);
