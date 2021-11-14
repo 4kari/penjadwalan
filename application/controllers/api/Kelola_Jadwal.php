@@ -10,12 +10,12 @@ class Kelola_Jadwal extends REST_Controller{
         $this->load->model('Kelola_Jadwal_model','mJadwal');
     }
     public function index_get(){
-        $tipe = $this->get('tipe');
-        $Jadwal = $this->mJadwal->getJadwal($tipe);
-        if ($Jadwal){
+        $id_skripsi = $this->get('id_skripsi');
+        $jadwal = $this->mJadwal->getJadwal($id_skripsi);
+        if ($jadwal){
             $this->response([
                 'status' => true,
-                'data' =>$Jadwal
+                'data' =>$jadwal
             ], REST_Controller::HTTP_OK);
         } else {
             $this->response([
