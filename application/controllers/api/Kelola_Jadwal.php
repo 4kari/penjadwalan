@@ -50,15 +50,8 @@ class Kelola_Jadwal extends REST_Controller{
     }
     public function index_post(){
         $data=[
-            'judul' => $this->post('Judul'),
-            'tanggal' => $this->post('Tanggal'),
-            'waktu' => $this->post('Waktu'),
-            'ruangan' => $this->post('Ruangan'),
-            'periode' => $this->post('Periode'),
-            'penguji_1' => $this->post('Penguji_1'),
-            'penguji_2' => $this->post('Penguji_2'),
-            'penguji_3' => $this->post('Penguji_3'),
-            'tipe' => $this->post('Tipe')
+            'id_skripsi'=>$this->post('id_skripsi'),
+            'tipe' => $this->post('tipe')
         ];
         
         if ($this->mJadwal->createJadwal($data)>0){
@@ -76,15 +69,10 @@ class Kelola_Jadwal extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'judul' => $this->put('Judul'),
             'tanggal' => $this->put('Tanggal'),
             'waktu' => $this->put('Waktu'),
             'ruangan' => $this->put('Ruangan'),
-            'periode' => $this->put('Periode'),
-            'penguji_1' => $this->put('Penguji_1'),
-            'penguji_2' => $this->put('Penguji_2'),
-            'penguji_3' => $this->put('Penguji_3'),
-            'tipe' => $this->put('Tipe')
+            'periode' => $this->put('Periode')
         ];
 
         if ($this->mJadwal->updateJadwal($data,$id)>0){
