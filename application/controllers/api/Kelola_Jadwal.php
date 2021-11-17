@@ -10,8 +10,9 @@ class Kelola_Jadwal extends REST_Controller{
         $this->load->model('Kelola_Jadwal_model','mJadwal');
     }
     public function index_get(){
-        $id_skripsi = $this->get('id_skripsi');
-        $jadwal = $this->mJadwal->getJadwal($id_skripsi);
+        $tipe = $this->get('tipe');
+        $jadwal = $this->mJadwal->getJadwal($tipe);
+        $jadwal = $this->mJadwal->olahJadwal($jadwal);
         if ($jadwal){
             $this->response([
                 'status' => true,
