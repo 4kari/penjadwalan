@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Nov 2021 pada 13.35
+-- Waktu pembuatan: 18 Nov 2021 pada 14.30
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.19
 
@@ -29,16 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `jadwal` (
   `id` int(11) NOT NULL,
-  `judul` varchar(128) NOT NULL,
+  `id_skripsi` varchar(128) NOT NULL,
   `tanggal` date DEFAULT NULL,
   `waktu` int(2) DEFAULT NULL,
   `ruangan` int(2) DEFAULT NULL,
   `periode` int(2) DEFAULT NULL,
-  `penguji_1` varchar(18) DEFAULT NULL,
-  `penguji_2` varchar(18) DEFAULT NULL,
-  `penguji_3` varchar(18) DEFAULT NULL,
   `tipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jadwal`
+--
+
+INSERT INTO `jadwal` (`id`, `id_skripsi`, `tanggal`, `waktu`, `ruangan`, `periode`, `tipe`) VALUES
+(1006, '1', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -211,7 +215,7 @@ ALTER TABLE `waktu`
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
 -- AUTO_INCREMENT untuk tabel `periode`
