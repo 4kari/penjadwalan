@@ -70,13 +70,18 @@ class Kelola_Jadwal extends REST_Controller{
     public function index_put(){
         $id=$this->put('id');
         $data=[
-            'tanggal' => $this->put('Tanggal'),
-            'waktu' => $this->put('Waktu'),
-            'ruangan' => $this->put('Ruangan'),
-            'periode' => $this->put('Periode')
+            'tanggal' => $this->put('tanggal'),
+            'waktu' => $this->put('waktu'),
+            'ruangan' => $this->put('ruangan'),
+            'periode' => $this->put('periode')
+        ];
+        $penguji=[
+			'penguji_1' => $this->put('penguji_1'),
+			'penguji_2' => $this->put('penguji_2'),
+			'penguji_3' => $this->put('penguji_3')
         ];
 
-        if ($this->mJadwal->updateJadwal($data,$id)>0){
+        if ($this->mJadwal->updateJadwal($data,$penguji,$id)>0){
             $this->response([
                 'status' => true,
                 'message' => 'Jadwal telah diperbarui'

@@ -15,7 +15,17 @@ class Kelola_Jadwal_model extends CI_Model{
         $this->db->insert('Jadwal',$data);
         return $this->db->affected_rows();
     }
-    public function updateJadwal($data,$id){
+    public function updateJadwal($data,$penguji,$id){
+        $jadwal=$this->db->get_where('Jadwal',['id'=>$id])->row_array();
+        if($jadwal['tipe']==1){
+            // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+            $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $jadwal['id_skripsi']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+            $skripsi['penguji_1']=$penguji['penguji_1'];
+            $skripsi['penguji_2']=$penguji['penguji_2'];
+            $skripsi['penguji_3']=$penguji['penguji_3'];
+            // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
+            json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
+        }
         $this->db->update('Jadwal', $data, ['id' => $id]);
         return $this->db->affected_rows();
     }
