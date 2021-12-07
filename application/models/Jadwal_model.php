@@ -1,12 +1,14 @@
 <?php
 class Jadwal_model extends CI_Model{
-    public function getJadwal($id=null){
-        if ($id === null){
-            return $this->db->get('Jadwal')->result_array();
-        } else {
-            return $this->db->get_where('Jadwal', ['id' => $id])->row_array();
-        }
+    public function getJadwal(){
+        return $this->db->get('Jadwal')->result_array();
     }
+    public function getJadwalById($id=null){
+            return $this->db->get_where('Jadwal', ['id' => $id])->result_array();
+    }
+    public function getJadwalBySkripsi($id=null){
+        return $this->db->get_where('jadwal', ['id_skripsi' => $id])->result_array();
+}
     public function deleteJadwal($id){
         $this->db->delete('Jadwal', ['id' => $id]);
         return $this->db->affected_rows();

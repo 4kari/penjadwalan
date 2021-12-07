@@ -11,10 +11,14 @@ class Jadwal extends REST_Controller{
     }
     public function index_get(){
         $id = $this->get('id');
-        if ($id == null) {
-            $Jadwal = $this->mJadwal->getJadwal();
+        $id_skripsi = $this->get('id_skripsi');
+        if ($id) {
+            $Jadwal = $this->mJadwal->getJadwalById($id);
+        }elseif($id_skripsi){
+            $Jadwal = $this->mJadwal->getJadwalBySkripsi($id_skripsi);
+
         } else{
-            $Jadwal = $this->mJadwal->getJadwal($id);
+            $Jadwal = $this->mJadwal->getJadwal();
         }
         if ($Jadwal){
             $this->response([

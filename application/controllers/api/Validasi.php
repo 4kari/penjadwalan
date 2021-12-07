@@ -11,10 +11,13 @@ class Validasi extends REST_Controller{
     }
     public function index_get(){
         $id = $this->get('id');
-        if ($id == null) {
-            $Validasi = $this->mValidasi->getValidasi();
+        $id_jadwal = $this->get('id_jadwal');
+        if ($id) {
+            $Validasi = $this->mValidasi->getValidasiById($id);
+        }elseif($id_jadwal){
+            $Validasi = $this->mValidasi->getValidasiByJadwal($id_jadwal);
         } else{
-            $Validasi = $this->mValidasi->getValidasi($id);
+            $Validasi = $this->mValidasi->getValidasi();
         }
         if ($Validasi){
             $this->response([
