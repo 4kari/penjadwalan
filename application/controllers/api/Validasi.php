@@ -58,11 +58,11 @@ class Validasi extends REST_Controller{
     public function index_post(){
         $data=[
             'id_jadwal' => $this->post('id_jadwal'),
-            'penguji_1' => $this->post('Penguji_1'),
-            'penguji_2' => $this->post('Penguji_2'),
-            'penguji_3' => $this->post('Penguji_3'),
-            'pembimbing_1' => $this->post('Pembimbing_1'),
-            'pembimbing_2' => $this->post('Pembimbing_2')
+            'penguji_1' => $this->post('penguji_1'),
+            'penguji_2' => $this->post('penguji_2'),
+            'penguji_3' => $this->post('penguji_3'),
+            'pembimbing_1' => $this->post('pembimbing_1'),
+            'pembimbing_2' => $this->post('pembimbing_2')
         ];
         
         if ($this->mValidasi->createValidasi($data)>0){
@@ -81,11 +81,11 @@ class Validasi extends REST_Controller{
         $id=$this->put('id');
         $data=[
             'id_jadwal' => $this->put('id_jadwal'),
-            'penguji_1' => $this->put('Penguji_1'),
-            'penguji_2' => $this->put('Penguji_2'),
-            'penguji_3' => $this->put('Penguji_3'),
-            'pembimbing_1' => $this->put('Pembimbing_1'),
-            'pembimbing_2' => $this->put('Pembimbing_2')
+            'penguji_1' => $this->put('penguji_1'),
+            'penguji_2' => $this->put('penguji_2'),
+            'penguji_3' => $this->put('penguji_3'),
+            'pembimbing_1' => $this->put('pembimbing_1'),
+            'pembimbing_2' => $this->put('pembimbing_2')
         ];
 
         if ($this->mValidasi->updateValidasi($data,$id)>0){
