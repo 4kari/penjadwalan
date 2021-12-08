@@ -18,6 +18,9 @@ class Acara_model extends CI_Model{
         ];
         // json_decode($this->curl->simple_post('http://10.5.12.56/diskusi/api/posting/',$posting,array(CURLOPT_BUFFERSIZE => 10)),true);
         json_decode($this->curl->simple_post('http://localhost/microservice/diskusi/api/posting/',$posting,array(CURLOPT_BUFFERSIZE => 10)),true);
+        if($skripsi['status']==1 || $skripsi['status']==4){$skripsi['status']=$skripsi['status']+1;}
+        json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
+        // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
         return $this->db->affected_rows();
     }
 }
