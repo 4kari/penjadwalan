@@ -1,5 +1,15 @@
 <?php
 class Validasi_model extends CI_Model{
+    // protected $ipSkripsi='http://10.5.12.21/skripsi/api/';
+    // protected $ipPenjadwalan='http://10.5.12.47/penjadwalan/api/';
+    // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
+    // protected $ipUser='http://10.5.12.26/user/api/';
+
+    protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    protected $ipUser='http://localhost/microservice/user/api/';
+    
     public function getValidasi(){
         return $this->db->get('Validasi')->result_array();
     }
@@ -23,10 +33,10 @@ class Validasi_model extends CI_Model{
 
         if($val['pembimbing_1'] && $val['pembimbing_2'] && $val['penguji_1'] && $val['penguji_2'] && $val['penguji_3']){
             $jadwal = $this->db->get_where('jadwal',['id'=>$val['id_jadwal']])->row_array();
-            $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $jadwal['id_skripsi']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+            $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array("id" => $jadwal['id_skripsi']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+
             if($skripsi['status']==2 || $skripsi['status']==5){$skripsi['status']=$skripsi['status']+1;}
-            json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
-            // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
+            json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi, array(CURLOPT_BUFFERSIZE => 10)),true);
         }
         return $this->db->affected_rows();
     }

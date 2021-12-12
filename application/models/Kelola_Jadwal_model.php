@@ -1,5 +1,15 @@
 <?php
 class Kelola_Jadwal_model extends CI_Model{
+    // protected $ipSkripsi='http://10.5.12.21/skripsi/api/';
+    // protected $ipPenjadwalan='http://10.5.12.47/penjadwalan/api/';
+    // protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
+    // protected $ipUser='http://10.5.12.26/user/api/';
+
+    protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
+    protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
+    protected $ipDiskusi='http://localhost/microservice/diskusi/api/';
+    protected $ipUser='http://localhost/microservice/user/api/';
+    
     public function getJadwal($tipe){
         if($tipe){
             return $this->db->get_where('Jadwal',['tipe'=>$tipe])->result_array();
@@ -18,13 +28,11 @@ class Kelola_Jadwal_model extends CI_Model{
     public function updateJadwal($data,$penguji,$id){
         $jadwal=$this->db->get_where('Jadwal',['id'=>$id])->row_array();
         if($jadwal['tipe']==1){
-            // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
-            $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $jadwal['id_skripsi']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
+            $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array("id" => $jadwal['id_skripsi']),array(CURLOPT_BUFFERSIZE => 10)),true)['data'][0];
             $skripsi['penguji_1']=$penguji['penguji_1'];
             $skripsi['penguji_2']=$penguji['penguji_2'];
             $skripsi['penguji_3']=$penguji['penguji_3'];
-            // json_decode($this->curl->simple_put('http://10.5.12.21/skripsi/api/Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
-            json_decode($this->curl->simple_put('http://localhost/microservice/skripsi/api/Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
+            json_decode($this->curl->simple_put($this->ipSkripsi.'Skripsi/',$skripsi,array(CURLOPT_BUFFERSIZE => 10)),true);
         }
         $this->db->update('Jadwal', $data, ['id' => $id]);
         return $this->db->affected_rows();
@@ -36,8 +44,7 @@ class Kelola_Jadwal_model extends CI_Model{
             $id_skripsi = $d['id_skripsi'];
             $validasi = $this->db->get_where('validasi',['id_jadwal'=>$id])->row_array();
             if(!$validasi){
-                // $skripsi = json_decode($this->curl->simple_get('http://10.5.12.21/skripsi/api/Skripsi/',array("id" => $id_skripsi),array(CURLOPT_BUFFERSIZE => 10)),true);
-                $skripsi = json_decode($this->curl->simple_get('http://localhost/microservice/skripsi/api/Skripsi/',array("id" => $id_skripsi),array(CURLOPT_BUFFERSIZE => 10)),true);
+                $skripsi = json_decode($this->curl->simple_get($this->ipSkripsi.'Skripsi/',array("id" => $id_skripsi),array(CURLOPT_BUFFERSIZE => 10)),true);
                 $ruangan = $this->db->get_where('Ruangan', ['id' => $d['ruangan']])->row_array();
                 $periode = $this->db->get_where('Periode', ['id' => $d['periode']])->row_array();
                 $waktu =  $this->db->get_where('Waktu', ['id' => $d['waktu']])->row_array();
