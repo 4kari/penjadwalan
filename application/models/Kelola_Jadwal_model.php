@@ -3,7 +3,7 @@ class Kelola_Jadwal_model extends CI_Model{
     protected $ipSkripsi='http://10.5.12.24/skripsi/api/';
     protected $ipPenjadwalan='http://10.5.12.82/penjadwalan/api/';
     protected $ipDiskusi='http://10.5.12.56/diskusi/api/';
-    protected $ipUser='http://10.5.12.16/user/api/';
+    protected $ipUser='http://10.5.12.18/user/api/';
 
     // protected $ipSkripsi='http://localhost/microservice/skripsi/api/';
     // protected $ipPenjadwalan='http://localhost/microservice/penjadwalan/api/';
