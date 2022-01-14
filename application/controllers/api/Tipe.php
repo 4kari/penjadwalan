@@ -29,62 +29,62 @@ class Tipe extends REST_Controller{
         }
     }
 
-    public function index_delete(){
-        $id = $this->delete('id');
-        if ($id == null){
-            $this->response([
-                'status' => false,
-                'message' => 'tambahkan id'
-            ], REST_Controller::HTTP_BAD_REQUEST);
-        } else {
-            if ($this->mTipe->deleteTipe($id)>0){
-                //ok
-                $this->response([
-                    'status' => true,
-                    'message' => 'terhapus'
-                ], REST_Controller::HTTP_NO_CONTENT);
-            }
-            else{
-                $this->response([
-                    'status' => false,
-                    'message' => 'id tidak ditemukan'
-                ], REST_Controller::HTTP_BAD_REQUEST);
-            }          
-        }
-    }
-    public function index_post(){
-        $data=[
-            'Tipe' => $this->post('Tipe')
-        ];
+    // public function index_delete(){
+    //     $id = $this->delete('id');
+    //     if ($id == null){
+    //         $this->response([
+    //             'status' => false,
+    //             'message' => 'tambahkan id'
+    //         ], REST_Controller::HTTP_BAD_REQUEST);
+    //     } else {
+    //         if ($this->mTipe->deleteTipe($id)>0){
+    //             //ok
+    //             $this->response([
+    //                 'status' => true,
+    //                 'message' => 'terhapus'
+    //             ], REST_Controller::HTTP_NO_CONTENT);
+    //         }
+    //         else{
+    //             $this->response([
+    //                 'status' => false,
+    //                 'message' => 'id tidak ditemukan'
+    //             ], REST_Controller::HTTP_BAD_REQUEST);
+    //         }          
+    //     }
+    // }
+    // public function index_post(){
+    //     $data=[
+    //         'Tipe' => $this->post('Tipe')
+    //     ];
         
-        if ($this->mTipe->createTipe($data)>0){
-            $this->response([
-                'status' => true,
-                'message' => 'Tipe baru ditambahkan'
-            ], REST_Controller::HTTP_CREATED);
-        } else {
-            $this->response([
-                'status' => false,
-                'message' => 'gagal menambahkan data baru'
-            ], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
-    public function index_put(){
-        $id=$this->put('id');
-        $data=[
-            'Tipe' => $this->put('Tipe')
-        ];
+    //     if ($this->mTipe->createTipe($data)>0){
+    //         $this->response([
+    //             'status' => true,
+    //             'message' => 'Tipe baru ditambahkan'
+    //         ], REST_Controller::HTTP_CREATED);
+    //     } else {
+    //         $this->response([
+    //             'status' => false,
+    //             'message' => 'gagal menambahkan data baru'
+    //         ], REST_Controller::HTTP_BAD_REQUEST);
+    //     }
+    // }
+    // public function index_put(){
+    //     $id=$this->put('id');
+    //     $data=[
+    //         'Tipe' => $this->put('Tipe')
+    //     ];
 
-        if ($this->mTipe->updateTipe($data,$id)>0){
-            $this->response([
-                'status' => true,
-                'message' => 'Tipe telah diperbarui'
-            ], REST_Controller::HTTP_NO_CONTENT);
-        } else {
-            $this->response([
-                'status' => false,
-                'message' => 'gagal memperbarui Tipe'
-            ], REST_Controller::HTTP_BAD_REQUEST);
-        }
-    }
+    //     if ($this->mTipe->updateTipe($data,$id)>0){
+    //         $this->response([
+    //             'status' => true,
+    //             'message' => 'Tipe telah diperbarui'
+    //         ], REST_Controller::HTTP_NO_CONTENT);
+    //     } else {
+    //         $this->response([
+    //             'status' => false,
+    //             'message' => 'gagal memperbarui Tipe'
+    //         ], REST_Controller::HTTP_BAD_REQUEST);
+    //     }
+    // }
 }
