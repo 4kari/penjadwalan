@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2021 pada 07.23
+-- Waktu pembuatan: 15 Jan 2022 pada 05.04
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.19
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `jadwal` (
   `id` int(11) NOT NULL,
-  `id_skripsi` varchar(128) NOT NULL,
+  `id_skripsi` int(11) NOT NULL,
   `tanggal` date DEFAULT NULL,
   `waktu` int(2) DEFAULT NULL,
   `ruangan` int(2) DEFAULT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id`, `id_skripsi`, `tanggal`, `waktu`, `ruangan`, `periode`, `tipe`) VALUES
-(1006, '1', NULL, 1, 1, 1, 1),
-(1007, '1', NULL, 8, 1, 12, 2),
-(1008, '4', NULL, 16, 2, 12, 1),
-(1009, '4', NULL, 13, 3, 12, 2);
+(1006, 1, NULL, 1, 1, 1, 1),
+(1007, 1, NULL, 8, 1, 12, 2),
+(1008, 4, NULL, 16, 2, 12, 1),
+(1009, 4, NULL, 13, 3, 12, 2);
 
 -- --------------------------------------------------------
 
