@@ -16,10 +16,14 @@ class Jadwal_model extends CI_Model{
         return $jadwal;
     }
     public function getJadwalById($id=null){
-            return $this->db->get_where('Jadwal', ['id' => $id])->result_array();
+        $jadwal = $this->db->get_where('Jadwal', ['id' => $id])->result_array();
+        $jadwal = $this->olahJadwal($jadwal);
+        return $jadwal;
     }
     public function getJadwalBySkripsi($id=null){
-        return $this->db->get_where('jadwal', ['id_skripsi' => $id])->result_array();
+        $jadwal = $this->db->get_where('jadwal', ['id_skripsi' => $id])->result_array();
+        $jadwal = $this->olahJadwal($jadwal);
+        return $jadwal;
 }
     public function deleteJadwal($id){
         $this->db->delete('Jadwal', ['id' => $id]);
