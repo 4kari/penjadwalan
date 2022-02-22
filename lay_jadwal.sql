@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jan 2022 pada 05.04
+-- Waktu pembuatan: 22 Feb 2022 pada 11.16
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.19
 
@@ -45,7 +45,9 @@ INSERT INTO `jadwal` (`id`, `id_skripsi`, `tanggal`, `waktu`, `ruangan`, `period
 (1006, 1, NULL, 1, 1, 1, 1),
 (1007, 1, NULL, 8, 1, 12, 2),
 (1008, 4, NULL, 16, 2, 12, 1),
-(1009, 4, NULL, 13, 3, 12, 2);
+(1009, 4, NULL, 13, 3, 12, 2),
+(1010, 6, '2022-02-24', 6, 1, 12, 1),
+(1011, 6, '2022-02-25', 9, 1, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,9 @@ INSERT INTO `validasi` (`id`, `id_jadwal`, `penguji_1`, `penguji_2`, `penguji_3`
 (1, 1006, NULL, NULL, NULL, '170411100042', NULL),
 (4, 1007, '197406102008121002', '198002232008121001', '198609262014041001', '170411100042', '170411100024'),
 (5, 1008, '198101092006041003', '170411100042', '198609262014041001', '198002232008121001', '197406102008121002'),
-(6, 1009, NULL, NULL, NULL, NULL, NULL);
+(6, 1009, NULL, NULL, NULL, NULL, NULL),
+(7, 1010, '198002232008121001', '198609262014041001', '198101092006041003', '170411100024', '170411100042'),
+(8, 1011, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,7 +232,7 @@ ALTER TABLE `waktu`
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1010;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1012;
 
 --
 -- AUTO_INCREMENT untuk tabel `periode`
@@ -252,7 +256,7 @@ ALTER TABLE `tipe`
 -- AUTO_INCREMENT untuk tabel `validasi`
 --
 ALTER TABLE `validasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `waktu`
